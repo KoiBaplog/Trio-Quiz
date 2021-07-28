@@ -1,5 +1,5 @@
 ---
-title: "Pair Quiz"
+title: "Module 4 Pair Quiz"
 author: "KoiBaplog"
 date: "7/28/2021"
 output: html_document
@@ -15,39 +15,75 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### An article in the Journal of Sound and Vibration ["Measurement of Noise-Evoked Blood Pressure by Means of Averaging Method: Relation between Blood Pressure Rise and PSL" (1991, Vol. 151(3), pp. 383-394)] described a study investigating the relationship between noise exposure and hypertension. The following data are representative of those reported in the article.
 
-### <span style="color:red">A. Draw a scatter diagram of y (blood pressure rise in millimeters of mercury) versus x (sound pressure level in decibels). Does a simple linear regression model seem reasonable in this situation? </span>
+### <span style="color:red">A. Draw a scatter diagram of $y$ (blood pressure rise in millimeters of mercury) versus $x$ (sound pressure level in decibels). Does a simple linear regression model seem reasonable in this situation? </span>
 
 ``` {R}
 y <- c(1,	0,	1,	2,	5,	1,	4,	6,	2,	3,	5,	4,	6,	8,	4,	5,	7,	9,	7,	6)
  
 x <- c(60,	63,	65,	70,	70,	70,	80,	90,	80,	80,	85,	89,	90,	90,	90,	90,	94,	100,	100,	100)
 
-plot(x, y, pch = 16, cex = 1, col = "red", main = "Relation between Blood Pressure Rise and PSL", xlab = "Sound Pressure Level (db)", ylab = "Blood Pressure Rise (mm)")
-
+plot(x, y, pch = 16, cex = 1, col = "red", main = "Scatter Plot of Blood Pressure Rise and Sound Pressure Level", xlab = "Sound Pressure Level (db)", ylab = "Blood Pressure Rise (mm)")
 
 ```
+
+After observing the scatter plot above, it seems likely that there is a linear relationship between the two variables.
+
+### <span style="color:red">B. Fit the simple linear regression model using least squares. Find an estimate of $\sigma^2$</span>
+
 ``` {R}
-y <- c(1,	0,	1,	2,	5,	1,	4,	6,	2,	3,	5,	4,	6,	8,	4,	5,	7,	9,	7,	6)
- 
-x <- c(60,	63,	65,	70,	70,	70,	80,	90,	80,	80,	85,	89,	90,	90,	90,	90,	94,	100,	100,	100)
+plot(x, y, pch = 16, cex = 1, col = "red", main = "Scatter Plot of Blood Pressure Rise and Sound Pressure Level", xlab = "Sound Pressure Level (db)", ylab = "Blood Pressure Rise (mm)")
 
-plot(x, y, pch = 16, cex = 1, col = "red", main = "Relation between Blood Pressure Rise and PSL", xlab = "Sound Pressure Level (db)", ylab = "Blood Pressure Rise (mm)")
+model <- lm(y ~ x)
 
-abline(lm(y ~ x))
+model
+
+abline(model)
 ```
 
-y	1	0	1	2	5	1	4	6	2	3	5	4	6	8	4	5	7	9	7	6 $\sum y$ = 86
+The plot shows the same scatter plot but with a linear regression model fitted on it. The <code> lm() </code> function provides a linear regression model using least squares. The resulting linear regression model is given by the equation:
 
-x	60	63	65	70	70	70	80	90	80	80	85	89	90	90	90	90	94	100	100	100 $\sum x$ = 1,456
+\begin{aligned}
 
-xy 60 0 65 140 350 70 320 540 160 240 425 356 540 720 360 450 658 900 700 600 $\sum xy$ = 7654
+\hat{y} = -10.1315 + 0.1743x
 
-$x^2$ 3600 3969 4225 4900 4900 4900 6400 8100 6400 6400 7225 7921 8100 8100 8100 8100 8836 10000 10000 10000 $\sum x^2$ = 140,176
+\end{aligned}
 
+The formula for an estimate of $\sigma^2$ is given by the formula:
 
-### <span style="color:red">B. Fit the simple linear regression model using least squares. Find an estimate of  σ2</span>
+\begin{aligned}
 
-#### m =  $\displaystyle \frac{n\sum xy - (\sum x) (\sum y)}{n\sum x^2 - (\sum x)^2}$ 
+\sigma^2 = \frac{SS_E}{n - 2}
 
+\end{aligned}
 
-### <span style="color:red">C. Find the predicted mean rise in blood pressure level associated with a sound pressure level of 85 decibels.</span>
+where $SS_E$ is the **error sum of squares** and $n = 20$ is the number of samples.
+
+The function <code> deviance() </code> gives the $SS_E$ of the linear regression model of the dataset.
+
+```{R}
+
+deviance(model)
+
+```
+
+\begin{aligned}
+
+\sigma^2 = \frac{31.26647}{20 - 2}
+
+\\
+
+\sigma^2 = 1.737026
+
+\end{aligned}
+
+### <span style="color:red">C. Find the predicted mean rise in blood pressure level associated with a sound pressure level of $85$ decibels.</span>
+
+This is obtained simply by substituting $x = 85$ in the linear regression model.
+
+\begin{aligned}
+
+\hat{y} = -10.1315 + 0.1743 * 85 = 4.684
+
+\end{aligned}
+
+With a sound pressure level of $85$, the predicted mean rise in blood pressure level is $4.684$.
