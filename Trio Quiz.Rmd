@@ -272,3 +272,8 @@ $$
 From the $t$-test for significance for $\beta_1$, there is not enough evidence to reject the null hypothesis. Therefore, the **brightness** variable is **not significant** to the regression model.
 
 For the significance for $\beta_2$, there is enough evidence to reject the null hypothesis. Therefore, the **contrast** variable is **significant** to the regression model.
+
+  
+###  References
+  
+  “StatQuest: Multiple regression in R,” YouTube, 30-Oct-2017. [Online]. Available: https://www.youtube.com/watch?v=hokALdIst8k.
