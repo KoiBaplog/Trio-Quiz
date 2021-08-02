@@ -277,3 +277,11 @@ For the significance for $\beta_2$, there is enough evidence to reject the null 
 ###  References
   
   “StatQuest: Multiple regression in R,” YouTube, 30-Oct-2017. [Online]. Available: https://www.youtube.com/watch?v=hokALdIst8k.
+  
+  D. C. Montgomery and G. C. Runger, in Applied Statistics and Probability for Engineers, 7th ed., Hoboken, NJ: Wiley, 2018, pp. 280–329. 
+
+  “How to create a scatterplot with a regression line in R,” Statology, 06-Mar-2021. [Online]. Available: https://www.statology.org/scatterplot-with-regression-line-r/. 
+
+  “How to create tables in r (with examples),” Statology, 21-Oct-2020. [Online]. Available: https://www.statology.org/create-table-in-r/. 
+
+  “Scatterplot3d: 3D graphics - R software and data visualization,” STHDA. [Online]. Available: http://www.sthda.com/english/wiki/scatterplot3d-3d-graphics-r-software-and-data-visualization. 
